@@ -1,18 +1,57 @@
-// syncRoutes.js
-const express = require('express');
-const router = express.Router();
-const syncController = require('../controllers/syncController');
+import syncService from '../services/sync.js';
 
-// Rota para sincronizar marcas
-router.post('/sync/marcas', syncController.syncMarcas);
+console.log('✅ syncService importado:', syncService);
 
-// Rota para sincronizar produtos
-router.post('/sync/produtos', syncController.syncProdutos);
+export async function syncRoutes(app, options) {
+  // Sincronizar marcas
+  app.post('/sync/marcas', async (request, reply) => {
+    try {
+      const result = await syncService.syncMarcas();
+      return reply.status(200).send(result);
+    } catch (error) {
+      return reply.status(500).send({
+        success: false,
+        message: error.message
+      });
+    }
+  });
 
-// Rota para sincronizar pedidos
-router.post('/sync/pedidos', syncController.syncPedidos);
+  // Sincronizar produtos
+  app.post('/sync/produtos', async (request, reply) => {
+    try {
+      const result = await syncService.syncProdutos();
+      return reply.status(200).send(result);
+    } catch (error) {
+      return reply.status(500).send({
+        success: false,
+        message: error.message
+      });
+    }
+  });
 
-// Rota para sincronizar tudo de uma vez
-router.post('/sync/all', syncController.syncAll);
+  // Sincronizar pedidos
+  app.post('/sync/pedidos', async (request, reply) => {
+    try {
+      const result = await syncService.syncPedidos();
+      return reply.status(200).send(result);
+    } catch (error) {
+      return reply.status(500).send({
+        success: false,
+        message: error.message
+      });
+    }
+  });
 
-module.exports = router;
+  // Sincronizar tudo
+  app.post('/sync/all', async (request, reply) => {
+    try {
+      const result = await syncService.syncAll();
+      return reply.status(200).send(result);
+    } catch (error) {
+      return reply.status(500).send({
+        success: false,
+        message: error.message
+      });
+    }
+  });
+}

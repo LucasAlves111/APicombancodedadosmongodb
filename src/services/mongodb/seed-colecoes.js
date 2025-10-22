@@ -1,8 +1,8 @@
 import mongoose from "mongoose"
 import { criarColecao } from "./criar-colecao.js"
-import { Marca } from "../../models/Marca.js"
-import { Produto } from "../../models/Produto.js"
-import { Pedido } from "../../models/Pedido.js"
+import  Marca  from "../../models/Marca.js"
+import  Produto  from "../../models/Produto.js"
+import  Pedido  from "../../models/Pedido.js"
 
 export const colecoesParaCriar = async () => {
     const marcasSchema = {

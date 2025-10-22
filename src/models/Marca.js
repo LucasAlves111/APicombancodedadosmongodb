@@ -5,4 +5,6 @@ const marcaSchema = new mongoose.Schema({
   paisOrigem: { type: String },
 }, { timestamps: true });
 
-export const Marca = mongoose.model("Marca", marcaSchema);
+ const Marca = mongoose.model("Marca", marcaSchema);
+
+export default Marca;

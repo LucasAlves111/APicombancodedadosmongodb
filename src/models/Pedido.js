@@ -9,4 +9,6 @@ const pedidoSchema = new mongoose.Schema({
   total: Number,
 }, { timestamps: true });
 
-export const Pedido = mongoose.model("Pedido", pedidoSchema);
+ const Pedido = mongoose.model("Pedido", pedidoSchema);
+
+export default Pedido;

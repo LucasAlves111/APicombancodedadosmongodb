@@ -1,3 +1,4 @@
+### Rotas normais
 GET http://localhost:3333/
 
 ###
@@ -8,4 +9,22 @@ GET http://localhost:3333/marcas
 
 GET http://localhost:3333/marcas/199
 
+###
 
+### Sincronizar apenas marcas
+POST http://localhost:3333/api/sync/marcas
+
+###
+
+### Sincronizar apenas produtos
+POST http://localhost:3333/api/sync/produtos
+
+###
+
+### Sincronizar apenas pedidos
+POST http://localhost:3333/api/sync/pedidos
+
+###
+
+### Sincronizar tudo
+POST http://localhost:3333/api/sync/all

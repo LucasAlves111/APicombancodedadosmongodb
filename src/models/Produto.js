@@ -7,4 +7,6 @@ const produtoSchema = new mongoose.Schema({
   marca: { type: mongoose.Schema.Types.ObjectId, ref: "Marca" } // relação com marca
 }, { timestamps: true });
 
-export const Produto = mongoose.model("Produto", produtoSchema);
+ const Produto = mongoose.model("Produto", produtoSchema);
+
+export default Produto;
