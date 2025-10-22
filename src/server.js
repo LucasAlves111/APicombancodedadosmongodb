@@ -19,6 +19,9 @@ async function server() {
     })
 
 
+    app.use('/api', syncRoutes);
+
+
 
 
     await conexaoMongo()
