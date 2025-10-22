@@ -1,8 +1,8 @@
-// syncController.js
+
 const syncService = require('../services/syncService');
 
 class SyncController {
-  // Sincronizar marcas
+
   async syncMarcas(req, res) {
     try {
       const result = await syncService.syncMarcas();
@@ -15,7 +15,7 @@ class SyncController {
     }
   }
 
-  // Sincronizar produtos
+  
   async syncProdutos(req, res) {
     try {
       const result = await syncService.syncProdutos();
@@ -28,7 +28,7 @@ class SyncController {
     }
   }
 
-  // Sincronizar pedidos
+
   async syncPedidos(req, res) {
     try {
       const result = await syncService.syncPedidos();
@@ -41,7 +41,7 @@ class SyncController {
     }
   }
 
-  // Sincronizar tudo
+
   async syncAll(req, res) {
     try {
       const result = await syncService.syncAll();

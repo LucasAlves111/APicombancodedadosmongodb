@@ -1,20 +1,20 @@
-// syncService.js - Versão para Knex
-import Marca from '../models/Marca.js'; // ajuste o caminho
-import Produto from '../models/Produto.js'; // ajuste o caminho
-import Pedido from '../models/Pedido.js'; // ajuste o caminho
+
+import Marca from '../models/Marca.js'; 
+import Produto from '../models/Produto.js'; 
+import Pedido from '../models/Pedido.js'; 
 import { database } from '../database/index.js';
 
 class SyncService {
-  // Sincronizar Marcas
+
   async syncMarcas() {
     try {
-      // Buscar todas as marcas do MongoDB
+    
       const marcas = await Marca.find();
       
       const results = [];
       
       for (const marca of marcas) {
-        // Usando Knex para insert com conflito
+ 
         await database('marcas')
           .insert({
             id: marca._id.toString(),
@@ -23,8 +23,8 @@ class SyncService {
             created_at: marca.createdAt || new Date(),
             updated_at: marca.updatedAt || new Date()
           })
-          .onConflict('id') // Se o ID já existe
-          .merge(['nome', 'descricao', 'updated_at']); // Atualiza esses campos
+          .onConflict('id') 
+          .merge(['nome', 'descricao', 'updated_at']); 
         
         results.push(marca._id);
       }
@@ -39,7 +39,6 @@ class SyncService {
     }
   }
 
-  // Sincronizar Produtos
   async syncProdutos() {
     try {
       const produtos = await Produto.find();
@@ -73,7 +72,7 @@ class SyncService {
     }
   }
 
-  // Sincronizar Pedidos
+ 
   async syncPedidos() {
     try {
       const pedidos = await Pedido.find();
@@ -106,7 +105,7 @@ class SyncService {
     }
   }
 
-  // Sincronizar tudo de uma vez
+
   async syncAll() {
     try {
       const marcasResult = await this.syncMarcas();

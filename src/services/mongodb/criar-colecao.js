@@ -1,8 +1,5 @@
 import { retorno } from "../retorno.js"
 
-// o parametro de colecoes é um array contendo objetos que possuem
-//nome da coleção
-//schema da coleção
 export const criarColecao = async (colecoes) => {
     try{
         if (colecoes.lengh == 0){

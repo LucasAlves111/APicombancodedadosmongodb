@@ -2,11 +2,10 @@ import 'dotenv/config'
 import { app } from "./app.js"
 import cors from '@fastify/cors'
 import { conexaoMongo } from './services/mongodb/conexao.js'
-import { syncRoutes } from './routes/Routes.js' // ← ADICIONAR no topo
-
+import { syncRoutes } from './routes/Routes.js' 
 
 async function server() {
-    await conexaoMongo() // ← MOVER para o topo
+    await conexaoMongo() 
     
     await app.register(cors, {
         origin: true,
@@ -21,8 +20,7 @@ async function server() {
         port: process.env.PORT
     }).then(() => {
         console.log('HTTP Server is running on PORT:' + process.env.PORT)
-          console.log('\n📋 Rotas registradas:')
-        app.printRoutes()
+       
     })
 }
 

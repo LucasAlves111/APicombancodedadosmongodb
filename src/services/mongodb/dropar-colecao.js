@@ -1,9 +1,7 @@
 import mongoose from "mongoose"
 import { retorno } from "../retorno.js"
 
-// o parâmetro da função {colecoes} é um array contendo
-// nomes das coleções a serem dropadas
-// *** se for passado um array vazio , dropar todas as coleções
+
 export const droparColecao = async (colecoes) => {
     try {
         const { db } = mongoose.connection;
